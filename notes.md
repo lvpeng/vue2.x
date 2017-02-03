@@ -2,5 +2,14 @@
 2. install vue by NPM (commonjs module)
 3. bundle module to lib using Webpack
    - import module -> bundle ->  script file
-4. bundle:
+4. bundle: ✓
+  - https://github.com/vuejs/vue-loader/issues/287
+  - ```javscript
+  resolve: {
+      alias: {
+        'vue$': 'vue/dist/vue.common.js'
+        }
+      }
+    ```
 5. dev-server
+  
