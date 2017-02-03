@@ -8865,13 +8865,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 
-var vue = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-  el: "#app",
-  data: {
-    msg:'hello, vue2.x'
-  },
-  method: {
+var apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha='
 
+var demo = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+  el: "#demo",
+  data: {
+    title:'Latest Vue.js Commits',
+    branchs: ['master', 'dev'],
+    currBranch: 'master',
+    commits: null
+  },
+  methods: { //here is `methods` , not `method` !!
+    fetchCommits: function(){
+      var xhttp = new XMLHttpRequest();
+      xhttp.addEventListener("load", reqListener);
+      xhttp.open("GET", apiURL+this.currBranch, true);
+      xhttp.send();
+
+      function reqListener () {
+        console.log(this.responseText);
+        this.commits = this.responseText;
+      }
+    }
   }
 });
 

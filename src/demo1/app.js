@@ -3,6 +3,9 @@ import Vue from 'vue'
 var vue = new Vue({
   el: "#app",
   data: {
-    msg:'hello, vue2'
+    msg:'hello, vue2.x'
   },
+  method: {
+
+  }
 });

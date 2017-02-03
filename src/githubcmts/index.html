@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="demo">
+        <h1>Latest Vue.js Commits</h1>
+        <input type="radio" :id="branch" value="master" v-model="currBranch">
+        master
+        <input type="radio" :id="branch" value="dev" v-model="currBranch">
+        dev
+        <div class="">
+          <label :for="{{branch}}">vuejs/vue@{{currBranch}}</label>
+        </div>
+    </div>
+
+  <script src="dist/bundle.js"></script>
+  </body>
+</html>
