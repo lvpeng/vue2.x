@@ -7,12 +7,17 @@
   <body>
     <div id="demo">
         <h1>Latest Vue.js Commits</h1>
-        <input type="radio" :id="branch" value="master" v-model="currBranch">
-        master
-        <input type="radio" :id="branch" value="dev" v-model="currBranch">
-        dev
-        <div class="">
-          <label :for="{{branch}}">vuejs/vue@{{currBranch}}</label>
+        <input type="radio" id="master" value="master" v-model="currBranch" :checked="fetchCommits">master
+        <input type="radio" id="dev" value="dev" v-model="currBranch" :checked="fetchCommits">dev
+        <!-- fixme -->
+        <label >vuejs/vue@{{currBranch}}</label>
+        <div class="cmtlist" v-show="">
+          <ul v-for="cmt in commits">
+            <li>
+              <h2>{{cmt.commit.message}}</h2>
+              {{cmt.commit.author.name}} - {{cmt.commit.committer.date}}
+            </li>
+          </ul>
         </div>
     </div>
 

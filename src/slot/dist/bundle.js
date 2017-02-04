@@ -8865,32 +8865,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 
-var apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha='
 
-var vm = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-  el: "#demo",
-  data: {
-    title:'Latest Vue.js Commits',
-    branchs: ['master', 'dev'],
-    currBranch: 'master',
-    commits: null
-  },
-  methods: { //here is `methods` , not `method` !!
-    fetchCommits: function(){
-      var xhttp = new XMLHttpRequest();
-      xhttp.addEventListener("load", reqListener);
-      xhttp.open("GET", apiURL + this.currBranch, true);
-      xhttp.send();
-      var self = this;
-      function reqListener () {
-        // console.log(this.responseText);
-        self.commits = JSON.parse(this.responseText);
-      }
-    }
-  }
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('my-component', {
+  template: `<div>
+               <h2>child title</h2>
+               <slot>this is only show if there is no content to be distrubuted</slot>
+            </div>`,
 });
 
-vm.fetchCommits();
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app-layout', {
+  template: `<div class="container">
+              <header>
+                <slot name="header"></slot>
+              </header>
+              <main>
+                <slot></slot>
+              </main>
+              <footer>
+                <slot name="footer"></slot>
+              </footer>
+            </div>`
+});
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('child',{
+  template: `
+            <div>
+              <slot text="hello from child"></slot>
+            </div>`
+})
+
+
+
+new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+  el: '#app'
+});
 
 
 /***/ })

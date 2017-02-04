@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <body>
+    <div id="app">
+        <!-- <my-component></my-component> -->
+        <div >
+          <h1>parent title</h1>
+          <my-component>
+            <p>
+              i am here , then slot content will not show
+            </p>
+          </my-component>
+        </div>
+
+        <app-layout>
+          <h1 slot="header">page title</h1>
+          <p>
+            a paragraph
+          </p>
+          <p>
+            a more paragraph
+          </p>
+          <p slot="footer">
+            page footer
+          </p>
+        </app-layout>
+
+        <div class="parent">
+          <child>
+            <template scope="props">
+              <span>hello from parent</span>
+              <span>{{ props.text }}</span>
+            </template>
+          </child>
+        </div>
+
+        <div class="parent">
+
+        </div>
+    </div>
+    <script type="text/javascript" src="dist/bundle.js">
+
+    </script>
+  </body>
+</html>
