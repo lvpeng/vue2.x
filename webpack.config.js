@@ -1,10 +1,10 @@
 var path = require('path');
 
 module.exports = {
-  entry: './src/githubcmts/app.js',
+  entry: './src/component/app.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'src/githubcmts/dist'),
+    path: path.resolve(__dirname, 'src/component/dist'),
   },
   resolve: {
     alias: {
@@ -12,7 +12,7 @@ module.exports = {
     }
   },
   devServer: {
-    contentBase: path.join(__dirname, "src/githubcmts"),
+    contentBase: path.join(__dirname, "src/component"),
     compress: true,
     port: 9000,
     hot:true,

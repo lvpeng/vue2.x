@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <body>
+    <div id="app">
+      <!-- custom-component -->
+      <custom-component></custom-component>
+      <!-- simple-counter -->
+      <simple-counter></simple-counter>
+      <simple-counter></simple-counter>
+      <simple-counter></simple-counter>
+
+      <!-- props: parent pass value to child -->
+      <div>
+        <input type="text" v-model="inputTxt">
+
+        <child :msg="inputTxt"></child>
+      </div>
+
+      <!-- $emit: child pass value to parent -->
+      <div>
+        <btncounter v-on:increasement="plusOne"></btncounter>
+        <btncounter v-on:increasement="plusOne"></btncounter>
+        <btncounter v-on:increasement="plusOne"></btncounter>
+        <p>{{totalCount}}</p>
+      </div>
+
+    </div>
+
+
+  <script type="text/javascript" src="dist/bundle.js"></script>
+  </body>
+</html>
