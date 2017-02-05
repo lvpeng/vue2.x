@@ -1,6 +1,20 @@
 import Vue from 'vue'
 
-var apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha='
+Vue.component('commit-list', {
+  template: `
+    				<ul v-if="branch == 'master'">
+              <li  v-for="cmt in commits">
+                <h2>{{cmt.commit.message}}</h2> {{cmt.commit.author.name}} - {{cmt.commit.committer.date}}
+              </li>
+            </ul>
+            <ul v-else-if="branch == 'dev'">
+              <li  v-for="cmt in commits">
+                <h2>{{cmt.commit.message}}</h2> {{cmt.commit.author.name}} - {{cmt.commit.committer.date}}
+              </li>
+            </ul>
+  					`,
+  props: ["commits", "branch"],
+});
 
 var vm = new Vue({
   el: "#demo",
@@ -29,5 +43,3 @@ var vm = new Vue({
     this.fetchCommits();
   }
 });
-
-vm.fetchCommits();

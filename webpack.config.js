@@ -11,6 +11,7 @@ module.exports = {
       'vue$': 'vue/dist/vue.common.js'
     }
   },
+  devtool: "cheap-eval-source-map",
   devServer: {
     contentBase: path.join(__dirname, "src/githubcmts"),
     compress: true,

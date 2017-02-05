@@ -10,22 +10,8 @@
         <input type="radio" value="master" v-model="currBranch" @click="fetchCommits">master
         <input type="radio" value="dev" v-model="currBranch" @click="fetchCommits">dev
         <p >current branch: <b>{{currBranch}}<?\/b></p>
-        <div v-if="currBranch == 'master'">
-          <ul v-for="cmt in commits">
-            <li>
-              <h2>{{cmt.commit.message}}</h2>
-              {{cmt.commit.author.name}} - {{cmt.commit.committer.date}}
-            </li>
-          </ul>
-        </div>
-        <div v-if="currBranch == 'dev'">
-          <ul v-for="cmt in commits">
-            <li>
-              <h2>{{cmt.commit.message}}</h2>
-              {{cmt.commit.author.name}} - {{cmt.commit.committer.date}}
-            </li>
-          </ul>
-        </div>
+
+        <commit-list :commits="commits" :branch="currBranch"></commit-list>
     </div>
   <script src="dist/bundle.js"></script>
   </body>

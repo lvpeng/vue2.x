@@ -3,5 +3,5 @@
   - create a xmr object and fetch data
 2. radio input layout
   - switch radio button , and change current branch : v-model with value
-3. how to trigger vue instance methods with option?  
+3. what's good way to call vue instance methods when page load ?  
 4. component : ul list
