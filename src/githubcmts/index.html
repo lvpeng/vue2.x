@@ -6,12 +6,19 @@
   </head>
   <body>
     <div id="demo">
-        <h1>Latest Vue.js Commits</h1>
-        <input type="radio" id="master" value="master" v-model="currBranch" :checked="fetchCommits">master
-        <input type="radio" id="dev" value="dev" v-model="currBranch" :checked="fetchCommits">dev
-        <!-- fixme -->
-        <label >vuejs/vue@{{currBranch}}</label>
-        <div class="cmtlist" v-show="">
+        <h1>{{title}}</h1>
+        <input type="radio" value="master" v-model="currBranch" @click="fetchCommits">master
+        <input type="radio" value="dev" v-model="currBranch" @click="fetchCommits">dev
+        <p >current branch: <b>{{currBranch}}<?\/b></p>
+        <div v-if="currBranch == 'master'">
+          <ul v-for="cmt in commits">
+            <li>
+              <h2>{{cmt.commit.message}}</h2>
+              {{cmt.commit.author.name}} - {{cmt.commit.committer.date}}
+            </li>
+          </ul>
+        </div>
+        <div v-if="currBranch == 'dev'">
           <ul v-for="cmt in commits">
             <li>
               <h2>{{cmt.commit.message}}</h2>
@@ -20,7 +27,6 @@
           </ul>
         </div>
     </div>
-
   <script src="dist/bundle.js"></script>
   </body>
 </html>
