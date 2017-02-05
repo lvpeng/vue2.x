@@ -1,25 +1,33 @@
 import Vue from 'vue'
 
+Vue.component('commit-radio', {
+  template: `
+							<input type="radio" v-model="branch" @click="fetchCmts"/>{{branch}}
+						`,
+  props: ["branch"],
+  methods: {
+    fetchCmts() {
+      this.$emit('fetchCmts');
+    }
+  }
+});
+
 Vue.component('commit-list', {
   template: `
-    				<ul v-if="branch == 'master'">
-              <li  v-for="cmt in commits">
-                <h2>{{cmt.commit.message}}</h2> {{cmt.commit.author.name}} - {{cmt.commit.committer.date}}
-              </li>
-            </ul>
-            <ul v-else-if="branch == 'dev'">
+    				<ul>
               <li  v-for="cmt in commits">
                 <h2>{{cmt.commit.message}}</h2> {{cmt.commit.author.name}} - {{cmt.commit.committer.date}}
               </li>
             </ul>
   					`,
-  props: ["commits", "branch"],
+  props: ["commits"],
 });
 
 var vm = new Vue({
   el: "#demo",
   data: {
     title:'Latest Vue.js Commits',
+    branchs: ["master", "dev"],
     currBranch: 'master',
     apiURL: 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=',
     xmlhttp: null,

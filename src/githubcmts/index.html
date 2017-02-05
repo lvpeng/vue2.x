@@ -7,8 +7,12 @@
   <body>
     <div id="demo">
         <h1>{{title}}</h1>
-        <input type="radio" value="master" v-model="currBranch" @click="fetchCommits">master
-        <input type="radio" value="dev" v-model="currBranch" @click="fetchCommits">dev
+        <ul>
+          <li v-for="branch in branchs">
+            <commit-radio :branch="branch" v-on:fetchCmts="fetchCommits"></commit-radio>
+          </li>
+        </ul>
+
         <p >current branch: <b>{{currBranch}}<?\/b></p>
 
         <commit-list :commits="commits" :branch="currBranch"></commit-list>
