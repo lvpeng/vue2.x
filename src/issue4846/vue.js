@@ -7588,8 +7588,13 @@ function genHandler (
     var code = '';
     var keys = [];
     for (var key in handler.modifiers) {
+      //key is not self
       if (modifierCode[key]) {
-        code += modifierCode[key];
+        if (key == 'self' && name =='~click'){
+          code = 'if($event.target == $event.currentTarget)return;'
+        }else{
+          code += modifierCode[key];
+        }
       } else {
         keys.push(key);
       }
