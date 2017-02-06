@@ -34,20 +34,20 @@ var vm = new Vue({
     commits: null
   },
   methods: {
-    fetchCommits: function() {
+    fetchCommits() {
         this.xmlhttp = new XMLHttpRequest();
         this.xmlhttp.onload = this.reqListener;
         this.xmlhttp.open("GET", this.apiURL + this.currBranch, true);
         this.xmlhttp.send();
       },
-      reqListener: function() {
+      reqListener() {
         if (this.xmlhttp.readyState == 4 && this.xmlhttp.status == 200) {
           //console.log(this.xmlhttp.responseText)
           this.commits = JSON.parse(this.xmlhttp.responseText);
         }
       }
   },
-  created: function(){
+  created(){
     this.fetchCommits();
   }
 });
