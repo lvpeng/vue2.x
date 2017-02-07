@@ -1,10 +1,10 @@
 var path = require('path');
 
 module.exports = {
-  entry: './src/issue4846/app.js',
+  entry: './src/githubcmts/app.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'src/issue4846/dist'),
+    path: path.resolve(__dirname, 'src/githubcmts/dist'),
   },
   resolve: {
     alias: {
@@ -13,7 +13,7 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "src/issue4846"),
+    contentBase: path.join(__dirname, "src/githubcmts"),
     compress: true,
     port: 9000,
     hot:true,
