@@ -1,10 +1,10 @@
 var path = require('path');
 
 module.exports = {
-  entry: './src/githubcmts/app.js',
+  entry: './src/solot/app.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'src/githubcmts/dist'),
+    path: path.resolve(__dirname, 'src/solot/dist'),
   },
   resolve: {
     alias: {
@@ -13,7 +13,7 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "src/githubcmts"),
+    contentBase: path.join(__dirname, "src/solot"),
     compress: true,
     port: 9000,
     hot:true,

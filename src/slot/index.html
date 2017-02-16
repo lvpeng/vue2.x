@@ -39,9 +39,11 @@
           </child>
         </div>
 
-        <div class="parent">
-
-        </div>
+        <my-awesome-list :items="items">
+          <template slot="item" scope="props">
+            <li class="my-fancy-item">{{ props.text }}</li>
+          </template>
+        </my-awesome-list>
     </div>
     <script type="text/javascript" src="dist/bundle.js">
 
