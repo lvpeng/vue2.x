@@ -1,30 +1,64 @@
 import Vue from 'vue'
 
-var vm = new Vue({
-  el: '#app',
-  data: {
-    msg: 'aaaa'
-  }
-});
+// var vm = new Vue({
+//   el: '#app',
+//   data: {
+//     msg: "aaa"
+//   }
+// });
+//
+// vm.msg = "bbb"
+//
+// console.log(vm.$el.textContent);
+//
+// Vue.nextTick(() => {
+//   console.log(vm.$el.textContent);
+// })
 
-vm.msg = 'bbbb';
+// var baby =  Vue.extend({
+//   template: "<div>{{ firstname }} {{ lastname}}</div>",
+//   data() {
+//     return {
+//       firstname: "yihan",
+//       lastname: "lyu"
+//     }
+//   }
+// })
+//
+// new baby().$mount('#app')
+//
+//
 
-Vue.nextTick(function(){
-  //Dom update
-  alert(this.msg)
-});
-
-var baby =  Vue.extend({
-  template: "<div>{{ firstname }} {{ lastname}}</div>",
-  data() {
+Vue.component('example', {
+  template: '<div><span>{{ message }}</span> <button @click="updateMessage">updateMessage</button></div>',
+  data: function () {
     return {
-      firstname: "yihan",
-      lastname: "lyu"
+      message: 'not updated'
+    }
+  },
+  ready(){
+    this.updateMessage();
+  },
+  methods: {
+    updateMessage: function () {
+      this.message = 'updated'
+      console.log(this.$el.textContent) // => 'not updated'
+      this.$nextTick(function () {
+        console.log(this.$el.textContent) // => 'updated'
+      })
     }
   }
 })
+var vm = new Vue({
+  el: '#app',
+  data: {
+    msg: "aaa",
+    msg2: '',
+    obj: {
 
-new baby().$mount('#app')
-
-
-Vue.nextTick()
+    }
+  }
+});
+vm.msg2 = 2
+// vm.msg  = "mmm"
+Vue.set(vm.obj, 'a' , 'a')
