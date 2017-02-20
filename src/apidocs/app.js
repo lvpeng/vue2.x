@@ -31,34 +31,59 @@ import Vue from 'vue'
 
 Vue.component('example', {
   template: '<div><span>{{ message }}</span> <button @click="updateMessage">updateMessage</button></div>',
-  data: function () {
+  data(){
     return {
       message: 'not updated'
     }
-  },
-  ready(){
-    this.updateMessage();
   },
   methods: {
     updateMessage: function () {
       this.message = 'updated'
       console.log(this.$el.textContent) // => 'not updated'
-      this.$nextTick(function () {
-        console.log(this.$el.textContent) // => 'updated'
+      this.$nextTick(() => {
+        console.log(this.$el.textContent); // 'updated'
       })
     }
   }
 })
 var vm = new Vue({
   el: '#app',
+  mixins: ['mixin'],
   data: {
     msg: "aaa",
     msg2: '',
     obj: {
 
     }
+  },
+  computed: {
+    fullname(){
+      return this.firstname + ' ' + this.lastname
+    }
   }
 });
 vm.msg2 = 2
 // vm.msg  = "mmm"
-Vue.set(vm.obj, 'a' , 'a')
+
+Vue.set(vm.obj, 'a', 'aaa')
+Vue.set(vm.obj, 'b', 'bbb')
+Vue.delete(vm.obj, 'b')
+
+
+// define a mixin object
+var myMixin = {
+  created: function () {
+    this.hello()
+  },
+  methods: {
+    hello: function () {
+      console.log('hello from mixin!')
+    }
+  }
+}
+// define a component that uses this mixin
+var Component = Vue.extend({
+  mixins: [myMixin]
+})
+
+var component = new Component() // -> "hello from mixin!"
