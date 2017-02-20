@@ -49,7 +49,7 @@ Vue.mixins({
   create(){
     var myOption = this.$options.myOption
     if (myOption) {
-      console.log(myOption);
+      console.log(myOption)
     }
   }
 });
